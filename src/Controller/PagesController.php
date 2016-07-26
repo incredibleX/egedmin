@@ -17,6 +17,8 @@ namespace App\Controller;
 use Cake\Core\Configure;
 use Cake\Network\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
+use Migrations\Migrations;
+use Cake\Event\Event;
 
 /**
  * Static content controller
@@ -27,6 +29,12 @@ use Cake\View\Exception\MissingTemplateException;
  */
 class PagesController extends AppController
 {
+
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+        $this->Auth->allow(['display', 'migrate']);
+    }
 
     /**
      * Displays a view
@@ -63,7 +71,7 @@ class PagesController extends AppController
         }
     }
 
-    public function migrate(){
+   /* public function migrate(){
         $this->autoRender = false;
 
         $migrate = new Migrations();
@@ -73,9 +81,5 @@ class PagesController extends AppController
             die("Already Migrated");
         }
 
-    }
-    public function isAuthorized($user)
-    {
-        return true;
-    }
+    }*/
 }
