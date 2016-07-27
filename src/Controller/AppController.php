@@ -50,6 +50,9 @@ class AppController extends Controller
             ],
             'logoutRedirect' => [
                 '_name' => 'login'
+            ],
+            'unauthorizedRedirect' => [
+                '_name' => 'login'
             ]
         ]);
     }
