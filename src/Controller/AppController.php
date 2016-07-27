@@ -52,7 +52,9 @@ class AppController extends Controller
                 '_name' => 'login'
             ],
             'unauthorizedRedirect' => [
-                '_name' => 'login'
+                'prefix' => null,
+                'controller' => 'Users',
+                'action' => 'login'
             ]
         ]);
     }
