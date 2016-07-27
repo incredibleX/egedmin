@@ -52,8 +52,7 @@ Router::prefix('admin', ['_namePrefix' => 'admin:'], function ($routes) {
           $routes->connect('/edit/:id', ['action' => 'edit'], ['pass' => ['id'], 'id' => '[[:xdigit:]-]+', '_name' => 'edit']);
       });
     */
-    $routes->connect('/:controller', ['action' => 'index'], ['routeClass' => 'DashedRoute']);
-    $routes->connect('/:controller/:action/*', [], ['routeClass' => 'DashedRoute']);
+    $routes->fallbacks('DashedRoute');
 });
 
 
@@ -63,7 +62,6 @@ Router::scope('/', function (RouteBuilder $routes) {
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
-    $routes->connect('/', ['_name' => 'admin:dashboard']);
 
     $routes->connect('/register', ['controller' => 'Users', 'action' => 'add'], ['_name' => 'register']);
 
