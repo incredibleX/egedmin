@@ -17,14 +17,14 @@
 
         <ul class="nav">
             <li class="active">
-                <?= $this->Html->Link("<i class='pe-7s-graph'></i><p>Dashboard</p>", [
+                <?= $this->Html->Link("<i class='fa fa-dashboard'></i><p>Dashboard</p>", [
                     '_name' => 'admin:dashboard'
                 ], [
                     'escape' => false
                 ]); ?>
             </li>
             <li>
-                <?= $this->Html->Link("<i class='pe-7s-user'></i><p>Users</p>", [
+                <?= $this->Html->Link("<i class='fa fa-user'></i><p>Users</p>", [
                     'prefix' => 'admin',
                     'controller' => 'Users',
                     'action' => 'index'
@@ -33,7 +33,7 @@
                 ]); ?>
             </li>
             <li>
-                <?= $this->Html->Link("<i class='pe-7s-cash'></i><p>Banks</p>", [
+                <?= $this->Html->Link("<i class='fa fa-money'></i><p>Banks</p>", [
                     'prefix' => 'admin',
                     'controller' => 'Banks',
                     'action' => 'index'

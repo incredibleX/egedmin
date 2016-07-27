@@ -18,7 +18,6 @@
         'light-bootstrap-dashboard.css', //Light Bootstrap Table core CSS
         'http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css', // fonts and icons
         'http://fonts.googleapis.com/css?family=Roboto:400,700,300',
-        'pe-icon-7-stroke.css',
         'custom.css'
     ]); ?>
 
