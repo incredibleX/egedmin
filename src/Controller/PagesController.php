@@ -71,7 +71,7 @@ class PagesController extends AppController
         }
     }
 
-   /* public function migrate(){
+    public function migrate(){
         $this->autoRender = false;
 
         $migrate = new Migrations();
@@ -81,5 +81,5 @@ class PagesController extends AppController
             die("Already Migrated");
         }
 
-    }*/
+    }
 }
