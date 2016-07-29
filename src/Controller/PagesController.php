@@ -92,4 +92,9 @@ class PagesController extends AppController
             die("Already Roll Backed");
         }
     }
+
+    public function isAuthorized($user)
+    {
+        return true;
+    }
 }
