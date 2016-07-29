@@ -15,7 +15,7 @@
                         ]); ?>
                     <?php endif; ?>
                 </div>
-                <div class="content table-responsive table-full-width">
+                <div class="content table-responsive table-full-width clearfix">
                     <table cellpadding="0" cellspacing="0" class="table table-hover table-striped">
                         <thead>
                         <tr>

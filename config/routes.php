@@ -44,15 +44,17 @@ Router::defaultRouteClass('DashedRoute');
 
 
 Router::prefix('admin', ['_namePrefix' => 'admin:'], function ($routes) {
-    $routes->connect('/', ['controller' => 'dashboard', 'action' => 'index'], ['_name' => 'dashboard']);
+    $routes->scope('/', function (RouteBuilder $routes) {
+        $routes->connect('/', ['controller' => 'dashboard', 'action' => 'index'], ['_name' => 'dashboard']);
 
-    /*  $routes->scope('/menus', ['controller' => 'Menus', '_namePrefix' => 'menus:'], function (RouteBuilder $routes) {
-          $routes->connect('/', ['action' => 'index'], ['_name' => 'index']);
-          $routes->connect('/add', ['action' => 'add'], ['_name' => 'add']);
-          $routes->connect('/edit/:id', ['action' => 'edit'], ['pass' => ['id'], 'id' => '[[:xdigit:]-]+', '_name' => 'edit']);
-      });
-    */
-    $routes->fallbacks('DashedRoute');
+        /*  $routes->scope('/menus', ['controller' => 'Menus', '_namePrefix' => 'menus:'], function (RouteBuilder $routes) {
+              $routes->connect('/', ['action' => 'index'], ['_name' => 'index']);
+              $routes->connect('/add', ['action' => 'add'], ['_name' => 'add']);
+              $routes->connect('/edit/:id', ['action' => 'edit'], ['pass' => ['id'], 'id' => '[[:xdigit:]-]+', '_name' => 'edit']);
+          });
+        */
+        $routes->fallbacks('DashedRoute');
+    });
 });
 
 
@@ -63,6 +65,7 @@ Router::scope('/', function (RouteBuilder $routes) {
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
 
+    $routes->connect('/', ['prefix' => 'admin', 'controller' => 'Dashboard', 'action' => 'index']);
     $routes->connect('/register', ['controller' => 'Users', 'action' => 'add'], ['_name' => 'register']);
 
     $routes->connect('/login', ['controller' => 'Users', 'action' => 'login'], ['_name' => 'login']);

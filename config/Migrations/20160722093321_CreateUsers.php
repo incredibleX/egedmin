@@ -35,7 +35,7 @@ class CreateUsers extends AbstractMigration
             ->addColumn('role', 'string', [
                 'limit' => 250,
                 'null' => false,
-                'default' => 'client'
+                'default' => 'user'
             ])
             ->addColumn('street', 'string', [
                 'null' => false,

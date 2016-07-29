@@ -72,16 +72,19 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label>Role<sup class="text-danger">*</sup></label>
-                        <?= $this->Form->input('role', ['options' => ['user' => 'User', 'admin' => 'Admin'],
-                            'class' => 'form-control',
-                            'label' => false]); ?>
+            <?php if ($authUser['role'] == 'admin'): ?>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Role<sup class="text-danger">*</sup></label>
+
+                            <?= $this->Form->input('role', ['options' => ['user' => 'User', 'admin' => 'Admin'],
+                                'class' => 'form-control',
+                                'label' => false]); ?>
+                        </div>
                     </div>
                 </div>
-            </div>
+            <?php endif; ?>
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
@@ -133,7 +136,7 @@
             </div>
             <div class="col-md-12 pull-right">
                 <div class="form-group">
-                    <?= $this->Form->button(__('Login'), ['class' => 'btn btn-info btn-fill pull-right']); ?>
+                    <?= $this->Form->button(__('Register'), ['class' => 'btn btn-info btn-fill pull-right']); ?>
                 </div>
             </div>
             <div class="col-md-12 pull-right">

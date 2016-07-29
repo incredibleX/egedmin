@@ -78,9 +78,9 @@ class UsersTable extends Table
             ->requirePresence('marital_status', 'create')
             ->notEmpty('marital_status');
 
-        $validator
+     /*   $validator
             ->requirePresence('role', 'create')
-            ->notEmpty('role');
+            ->notEmpty('role');*/
 
         $validator
             ->requirePresence('street', 'create')
@@ -138,4 +138,5 @@ class UsersTable extends Table
 
         return $rules;
     }
+
 }

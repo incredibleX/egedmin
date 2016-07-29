@@ -23,6 +23,7 @@
                     'escape' => false
                 ]); ?>
             </li>
+            <?php if ($authUser['role'] == 'admin'){ ?>
             <li>
                 <?= $this->Html->Link("<i class='fa fa-user'></i><p>Users</p>", [
                     'prefix' => 'admin',
@@ -32,6 +33,18 @@
                     'escape' => false
                 ]); ?>
             </li>
+            <?php } else { ?>
+                <li>
+                    <?= $this->Html->Link("<i class='fa fa-user'></i><p>Profile</p>", [
+                        'prefix' => 'admin',
+                        'controller' => 'Users',
+                        'action' => 'view',
+                        $authUser['id']
+                    ], [
+                        'escape' => false
+                    ]); ?>
+                </li>
+            <?php }?>
             <li>
                 <?= $this->Html->Link("<i class='fa fa-money'></i><p>Banks</p>", [
                     'prefix' => 'admin',

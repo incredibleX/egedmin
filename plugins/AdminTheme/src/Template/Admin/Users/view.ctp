@@ -1,9 +1,20 @@
 <div class="container-fluid">
     <div class="row">
+        <div class="col-md-12 clearfix">
+            <h4 class="text-muted float-left"><b><?= h($user->name) ?></b></h4>
+            <h4>
+                <?= $this->Html->Link(__("<i class='fa fa-pencil'></i> Edit"), [
+                    'controller' => 'Users',
+                    'action' => 'edit',
+                    $user->id
+                ], [
+                    'class' => 'btn btn-danger float-right',
+                    'escape' => false
+                ]); ?>
+            </h4>
+        </div>
+
         <div class="col-md-8">
-            <div class="row">
-                <h4 class="text-muted margin-left-15"><b><?= h($user->name) ?>2</b></h4>
-            </div>
             <div class="card">
                 <div class="content">
                     <table class="vertical-table table table-hover table-striped">
@@ -51,17 +62,18 @@
                         </tr>
                         <tr>
                             <th><?= __('Phone') ?></th>
-                            <td><?= $this->Number->format($user->phone) ?></td>
+                            <td><?= __($user->phone) ?></td>
                         </tr>
                         <tr>
                             <th><?= __('Created') ?></th>
                             <td><?= h($user->created) ?></td>
                         </tr>
-
-                        <tr>
-                            <th><?= __('Email Conformation') ?></th>
-                            <td><?= $user->email_conformation ? __('Yes') : __('No'); ?></td>
-                        </tr>
+                        <?php if ($authUser['role'] == 'admin'): ?>
+                            <tr>
+                                <th><?= __('Email Conformation') ?></th>
+                                <td><?= $user->email_conformation ? __('Yes') : __('No'); ?></td>
+                            </tr>
+                        <?php endif; ?>
                     </table>
                 </div>
             </div>
@@ -79,7 +91,7 @@
             <div class="card">
                 <div class="content">
                     <div class="related">
-                        <?php if (!empty($user->banks)): ?>
+                        <?php if (!empty($user->banks)) { ?>
                             <table cellpadding="0" cellspacing="0" class="table table-hover table-striped">
                                 <tr>
                                     <th><?= __('Bank Name') ?></th>
@@ -112,7 +124,10 @@
                                     </tr>
                                 <?php endforeach; ?>
                             </table>
-                        <?php endif; ?>
+                        <?php } else { ?>
+                            <p class="text-center text-muted">No Banks are associated to this profile.</p>
+                        <?php } ?>
+
                     </div>
                 </div>
             </div>

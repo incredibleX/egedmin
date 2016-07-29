@@ -80,6 +80,16 @@ class PagesController extends AppController
         } else{
             die("Already Migrated");
         }
+    }
 
+    public function rollback(){
+        $this->autoRender = false;
+
+        $migrate = new Migrations();
+        if($migrate->rollback()){
+            die("Done");
+        } else{
+            die("Already Roll Backed");
+        }
     }
 }

@@ -46,12 +46,17 @@ class AppController extends Controller
         $this->loadComponent('Auth', [
             'authorize' => ['Controller'],
             'loginRedirect' => [
-                '_name' => 'admin:dashboard'
+                'prefix' => 'admin',
+                'controller' => 'Dashboard',
+                'action' => 'index'
             ],
             'logoutRedirect' => [
-                '_name' => 'login'
+                'prefix' => false,
+                'controller' => 'Users',
+                'action' => 'logout'
             ],
-            'unauthorizedRedirect' => [
+            'loginAction' => [
+                'prefix' => false,
                 'controller' => 'Users',
                 'action' => 'login'
             ]
@@ -88,6 +93,6 @@ class AppController extends Controller
 
     public function isAuthorized($user)
     {
-        return (isset($user['role']) && $user['role'] === 'admin')? true: false;
+        return (isset($user['role']) && ($user['role'] === 'admin' || $user['role'] === 'user'))? true: false;
     }
 }
