@@ -27,6 +27,11 @@ class UsersController extends AppController
     {
         $users = $this->paginate($this->Users);
 
+        if ($this->Auth->user('role') == "admin") {
+            $users = $this->paginate($this->Users);
+        } else{
+            $users = $this->paginate($this->Users->find('all')->where(['id' => $this->Auth->user('id')]));
+        }
         $this->set(compact('users'));
         $this->set('_serialize', ['users']);
     }

@@ -57,7 +57,9 @@
                                     <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>
                                     <?php if ($authUser['role'] == 'admin') { ?>
                                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>
-                                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>
+                                        <?php if ($authUser['role'] == 'admin'): ?>
+                                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>
+                                        <?php endif; ?>
                                     <?php } ?>
                                 </td>
                             </tr>
