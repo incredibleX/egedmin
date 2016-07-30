@@ -44,22 +44,16 @@ class AppController extends Controller
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
         $this->loadComponent('Auth', [
-            'authorize' => ['Controller'],
             'loginRedirect' => [
-                'prefix' => 'admin',
-                'controller' => 'Dashboard',
-                'action' => 'index'
+                '_name' => 'admin:dashboard',
             ],
             'logoutRedirect' => [
-                'prefix' => false,
-                'controller' => 'Users',
-                'action' => 'logout'
+                '_name' => 'login'
             ],
             'loginAction' => [
-                'prefix' => false,
-                'controller' => 'Users',
-                'action' => 'login'
-            ]
+                '_name' => 'login'
+            ],
+            'authorize' => 'Controller'
         ]);
     }
 
@@ -88,11 +82,16 @@ class AppController extends Controller
             $this->set('_serialize', true);
         }
 
+        if($this->Auth->user('role') && $this->request->params['action'] == 'login'){
+            $this->redirect($this->Auth->redirectUrl());
+        }
+
         $this->set('authUser', $this->Auth->user());
     }
 
     public function isAuthorized($user)
     {
-        return (isset($user['role']) && ($user['role'] === 'admin' || $user['role'] === 'user'))? true: false;
+        // && ($user['role'] === 'admin')
+        return (isset($user['role']))? true: false;
     }
 }

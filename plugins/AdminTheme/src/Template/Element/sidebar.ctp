@@ -46,7 +46,7 @@
                 </li>
             <?php }?>
             <li>
-                <?= $this->Html->Link("<i class='fa fa-money'></i><p>Banks</p>", [
+                <?= $this->Html->Link("<i class='fa fa-briefcase'></i><p>Banks</p>", [
                     'prefix' => 'admin',
                     'controller' => 'Banks',
                     'action' => 'index'
@@ -54,6 +54,28 @@
                     'escape' => false
                 ]); ?>
             </li>
+
+            <li>
+                <?= $this->Html->Link("<i class='fa fa-money'></i><p>Funds</p>", [
+                    'prefix' => 'admin',
+                    'controller' => 'Funds',
+                    'action' => 'index'
+                ], [
+                    'escape' => false
+                ]); ?>
+            </li>
+
+            <?php if ($authUser['role'] == 'admin'){ ?>
+                <!--<li>
+                    <?/*= $this->Html->Link("<i class='fa fa-plane'></i><p>Fund Requests</p>", [
+                        'prefix' => 'admin',
+                        'controller' => 'Funds',
+                        'action' => 'requests'
+                    ], [
+                        'escape' => false
+                    ]); */?>
+                </li>-->
+            <?php }?>
 
             <!--<li class="active-pro">
                 <a href="#">

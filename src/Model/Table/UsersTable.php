@@ -40,6 +40,10 @@ class UsersTable extends Table
 
         $this->addBehavior('Timestamp');
 
+        $this->hasMany('Funds', [
+            'foreignKey' => 'user_id'
+        ]);
+
         $this->hasMany('Banks', [
             'foreignKey' => 'user_id'
         ]);

@@ -36,6 +36,10 @@ class BanksTable extends Table
         $this->displayField('name');
         $this->primaryKey('id');
 
+        $this->hasMany('Funds', [
+            'foreignKey' => 'bank_id'
+        ]);
+
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',
             'joinType' => 'INNER'

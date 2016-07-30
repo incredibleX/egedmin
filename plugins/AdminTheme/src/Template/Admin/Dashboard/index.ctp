@@ -17,8 +17,8 @@
                             ], ['class' => 'btn btn-info btn-fill pull-right']); ?>
                         </div>
                         <div class="col-sm-6"><?= $this->Html->Link(__('Add Fundings to Bank'), [
-                                'controller' => 'Users',
-                                'action' => 'index'
+                                'controller' => 'Funds',
+                                'action' => 'add'
                             ], ['class' => 'btn btn-danger btn-fill push-left']); ?>
                         </div>
                     </div>

@@ -6,14 +6,12 @@
             </div>
             <div class="card">
                 <div class="header">
-                    <?php if ($authUser['role'] == 'admin'): ?>
-                        <?= $this->Html->Link(__('Add New'), [
-                            '_name' => 'register'
-                        ], [
-                            'class' => 'btn btn-success pull-right',
-                            'escape' => false
-                        ]); ?>
-                    <?php endif; ?>
+                    <?= $this->Html->Link(__('Add New'), [
+                        '_name' => 'register'
+                    ], [
+                        'class' => 'btn btn-success pull-right',
+                        'escape' => false
+                    ]); ?>
                 </div>
                 <div class="content table-responsive table-full-width clearfix">
                     <table cellpadding="0" cellspacing="0" class="table table-hover table-striped">
